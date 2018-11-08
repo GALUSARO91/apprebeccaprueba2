@@ -1,6 +1,7 @@
 {
   "name": "apprebeccaprueba2",
   "description": "pruebaheroku",
+  "stack": "heroku-18"
   "scripts": {
   },
   "env": {
