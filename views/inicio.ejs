@@ -1,0 +1,78 @@
+<% include encabezado%>
+
+<main class="container-fluid">
+<div class="jumbotron jumbotron-fluid">
+  <h1>Promociones</h1>
+  <p>Espere sus promociones aqui proximamente!!!</p>
+  
+</div>
+
+<h1 class="recientes">Trabajos recientes</h1>
+<% var impar = true; entradas.forEach(function(entrada){%>
+    <% if(impar==true){%>
+    <section  class="row mosaico">
+    <h2 class="col-md-12"><%= entrada.nombre%></h2>
+    <% if (entrada.tipo =='imagen'){%>
+    
+      <figure class="col-md-6">
+        <img src=/<%=entrada.media.archivoNombre%> class="img-fluid img-thumbnail">
+      </figure>
+    <% } else if(entrada.tipo =='video'){%>
+      <div class="col-md-6">
+        
+        <iframe id=<%="video-"+entrada.media.archivoNombre %> 
+          type="text/html" 
+          src= <%='https:/\/www.youtube.com/embed/' + entrada.media.archivoNombre + '?enablejsapi=1 allowfullscreen' %>
+        ></iframe>
+        
+        
+      </div>
+    <% } %>
+    
+    <p class="col-md-6"><%=entrada.descripcion%></p>
+    </section>
+    <% impar = false} else{ %>
+    <section class="row mosaico">
+    <h2 class="col-md-12 derecha"><%= entrada.nombre%></h2>
+    <p class="col-md-6"><%=entrada.descripcion%></p>
+    
+    <% if (entrada.tipo =='imagen'){%>
+    
+      <figure class="col-md-6">
+        <img src=/<%=entrada.media.archivoNombre%> class="img-fluid img-thumbnail">
+      </figure>
+    <% } else if(entrada.tipo =='video'){%>
+      <div class="col-md-6">
+        
+         <iframe id=<%="video-"+entrada.media.archivoNombre %> 
+          type="text/html" 
+          src= <%='https:/\/www.youtube.com/embed/' + entrada.media.archivoNombre + '?enablejsapi=1 allowfullscreen' %>
+        ></iframe>
+       
+        
+      </div>
+   
+    <% } %>
+     </section>
+    <% impar = true};})%>
+
+<% include pie%>
+
+<script src="/YoutubeApi.js">
+  
+  var entradas
+  
+  <% entradas.forEach(function(entrada){ %>
+  
+     <% if(entrada.tipo == "video"){ %>
+        
+        entradas = <%= entradas.archivoNombre %>
+      
+  <% }}) %>
+  
+  entradas.forEach(dalePlay(entrada));
+  
+</script>
+
+
+</html>

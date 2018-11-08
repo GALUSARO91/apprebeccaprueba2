@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="Pagina de inicio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>**Rebecca´s Beauty Shop**</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="/flor.ico"> <!-- Flor icon -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="/inicio.css"> <!-- CSS stylesheet -->
+</head>
+<body>
+    <header class="sticky-top">
+        <h1><a class="banner" href="/">Rebecca's Beauty Shop</a></h1>
+    </header>
+   
+        <div class="menu">
+            <img src="/Menu-tab.png">
+        <ul class="nav flex-column">
+         <li class="nav-item"><a class="nav-link" href="/administrador">Administrador</a></li>
+         <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+         <li class="nav-item"><a class="nav-link" href="/servicios">Servicios</a></li>
+        </ul>
+        </div>
+    
+ <section class="container">
+        <% if(mensajeExito && mensajeExito.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+           	&#128077 <strong class = "alertMessage"> <%= mensajeExito %> </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
+        </div>
+        <% } %>
+        
+        <% if(mensajeError && mensajeError.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong class = "alertMessage"> <%= mensajeError %> </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span  aria-hidden="true">&times</span></button>
+        </div>
+        <% } %>
+        
+        
+        <% if(mensajeAdvertencia && mensajeAdvertencia.length > 0) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong class = "alertMessage"> <%= mensajeAdvertencia %> </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times</span></button>
+        </div>
+        <% } %>
+        
+    </section>
+        

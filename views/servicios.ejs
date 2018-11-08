@@ -1,0 +1,68 @@
+<% include encabezado%>
+<main class="container-fluid">
+<h1 class="recientes">Servicios</h1>
+
+    <section class="row">  
+    <div class="col">
+        <h2 class>Pedicure</h2>
+        <figure>
+        <img src="https://9ru2pq-dm2305.files.1drv.com/y4m307jivdT1Vhqq6jVZsO78KPffYe6EUZ-RJ5QafS_LG9ALGfRe7eFMDif1mvq3nrcnkUpylAF1SjPEOd0me3RIPOyZJ2fUyuNEOK7yS8tr-wjT5jge9OjdIYV_Ey85S4m4_J9LHr6URU_zffExv1fJ2QhUXMJOAZU-mFfSyGACOOt9j-9HHY0X4FAgKD5YdGtJOFVSYC7jr38gSUcMDt8Dg?width=1022&height=767&cropmode=none" class="img-fluid img-thumbnail"/>
+        <button type="button" class="btn btn-info">Mas informacion</button>
+        <p class="ocultar"> 
+              El pedicure comprende varios servicios como la extranccion de uñeros, limpieza
+              profunda en las uñas, recortado, remoción de los excesos de piel, pintado de uñas, 
+              decoraciones (esto va a depender de la complejidad de las decoraciones) y mas...
+        </p>
+        </div>
+    
+    <div class="col">
+        <h2>Manicure</h2>
+        <figure>
+        <img src="https://m3fb4a-dm2305.files.1drv.com/y4m0z2SNKPzRWpS-vDsVTD-x17l51ngZrS9Zg5IuMBdrv_OBwQSyYRKcJ7Wyt4L0MOhUKtlBnWVw53z60sRO-w73GnkDUQa3OKsNlpI8GU5IUQpECpSEjTXdZjdB7IlCkjGw3REOYFFH8JMs8k3aBJvk2aOSU2S5k_CpLX8Jp2JAEgwQ7H7nrmNdU0ldXfjFrW0-F4Lcw_c_cgKAKMyZgrrkQ?width=720&height=960&cropmode=none" class="img-fluid img-thumbnail"/>
+        </figure>
+        <button type="button" class="btn btn-info">Mas informacion</button>
+        <p class="ocultar">
+              El manicure abarca la remocion de la cuticula y piel muerta, recorte de uñas a gusto del cliente
+              (recomendamos cuadrado para evitar uñeros), pintado de uñas, decoraciones (esto depende de
+              la complejidad de las decoraciones) y mas...
+        </p>
+    
+    </div>
+    
+   <div class="col"> 
+        <h2>Uñas acrilicas naturales</h2>
+        <figure>
+        <img src="https://ceqp3w.dm.files.1drv.com/y4mHxnk2zEbuJ4ZK0sFP36wR7GOixhqTGsiBv1u9wDSXaep11eI6_Yec-Fo98veKDRfa3L2UjYIK_gkOYGmRONvrj-xYdee1QgQ8TxnOgq3kVmdg3PSLTWzCuyy0ZhxbckAcIPC2pkeAZ9cBcY_tLDS6xG91uA18JfjsYrpw6bV29uxgjGDJUc6yTmyxGyIW07-JeYtEM8A-Uzb9ERBvWZRuQ?width=960&height=1280&cropmode=none" class="img-fluid img-thumbnail"/>
+        </figure>
+        <button type="button" class="btn btn-info">Mas informacion</button>
+        <p class="ocultar">
+              Uñas acrilicas naturales con tip encapsuladas, las cuales realzan la belleza de tus manos y
+              mantiene una apariencia natural y juvenil.
+        </p>
+    </div>
+    
+    <div class="col">
+        <h2>Maquillaje</h2>
+        <figure>
+        <img src="https://ceqi3w.dm.files.1drv.com/y4m2UZipjg-1Ju5jDbPfTr99uqnsFA49lla_tbGlVi-7my1XniRP3rPOE0dW9BQDGKXuInXpGdjGpRezBJMO4R3V9mCai3CApZCAuUnbFSxnEhdjrP9Cu78h9OMGUKUfGHfEWYxAXE5VAUJ5RS04lAat1Di6hAHcRPaR8jAr0nsMCU6_lCmqwgYlyPzj5tufWeehsCVO9zZTRy2AvOaYcrTMg?width=960&height=1280&cropmode=none" class="img-fluid img-thumbnail"/>
+        </figure>
+        <button type="button" class="btn btn-info">Mas informacion</button>
+        <p class="ocultar">
+              Como parte del servicio de maquillaje, se realiza maquillaje para toda ocacion, como parte del mismo
+              se busca reducir inperfecciones de la piel(machas de acné, de enbarazo, quemaduras solares),
+              realzar los rasgos para que se vean mas atractivos, perfilar las cejas, realzar la mirada 
+              (incluye pestañas postizas) todo esto para lograr una apariencia elegante, sobria y atractiva.
+        </p>
+    </div>
+
+<% include pie%>
+<script>
+    
+    $("button").on("click",function(){
+       $(this).next().toggleClass("ocultar");
+    
+    });
+    
+</script>    
+
+</html>

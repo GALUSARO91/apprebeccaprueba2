@@ -1,0 +1,88 @@
+<% include encabezado%>
+<a href="/logout">SALIR!!!</a>
+<main class="container-fluid">
+<form action="/Blogs/<%=entradas._id%>" enctype="multipart/form-data" method="Post">
+<fieldset>
+    <legend>Modificar entrada de Blog</legend>
+<section class="row">
+    <div class="col-md-6">
+        <label>Fecha</label> 
+    </div>
+    <div class="col-md-6">
+        <% var fecha= new Date();var hoy=fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear()%>
+        <output name="fecha" type="date"><%=hoy%></output>
+    </div>    
+</section>
+
+<section class="row">
+    <div class="col-md-6">
+        <label>Titulo de Entrada de Blog</label>
+    </div>
+    <div class="col-md-6">
+        <input type="Text" name="nombre" value="<%=entradas.nombre%>">
+    </div>
+</section>
+
+<section class="row">
+    <div class="col-md-6">
+        <% if (entradas.tipo == 'imagen'){%>
+            <label><input type="radio" name="tipo" value="imagen" checked> Imagen</label>
+            <label><input type="radio" name="tipo" value="video"> Video</label>
+        <% } else { %>
+            <label><input type="radio" name="tipo" value="imagen"> Imagen</label>
+            <label><input type="radio" name="tipo" value="video" checked> Video</label>
+        <% } %>
+    </div>
+</section>
+
+<section id="mediaEntry">
+    
+    
+</section>
+
+<section class="row">
+    <div class="col-md-6">
+        <label>Entrada de blog</label>
+    </div>
+    <div class="col-md-6">
+    <textarea name="descripcion" cols="40" rows="10"><%=entradas.descripcion%></textarea>
+    </div>
+    
+</section> 
+
+<input type="submit">
+</fieldset>
+</form>
+
+<% include pie%>
+
+<script>
+
+var media = '<%=entradas.media.archivoNombre%>';
+
+ $(document).ready(elegir);
+ $("input[name='tipo']").on({"click": elegir});
+ 
+ 
+ 
+ function elegir () {
+        var mediaTipo  = $("input[name='tipo']:checked").val();
+        
+        if (mediaTipo == "imagen"){
+        
+        $("#mediaEntry").empty();
+        
+        $("#mediaEntry").html('<div class="col-md-6"><label>Archivo multimedia <strong> Seleccione una imagen</strong></label> </div> <div class="col-md-6"><input type="file" name="media"></div>');
+
+    }
+        else {
+            $("#mediaEntry").empty();
+            
+            $("#mediaEntry").html('<div class="col-md-6"><label>Archivo multimedia <strong> Agregar direccion de video de Youtube</strong></label></div><div class="col-md-6"><input type="text" name="media" value="https://youtu.be/'+media+'"></div>');
+            //$("#mediaEntry").closest('input').val(media);
+    };
+};
+ 
+    </script>
+
+</html>

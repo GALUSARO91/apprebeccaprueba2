@@ -1,0 +1,146 @@
+<% include encabezado%>
+<a href="/logout">SALIR!!!</a>
+<main class="container-fluid">
+<form action="/Blogs" enctype="multipart/form-data" method="Post">
+<fieldset>
+    <legend>Escriba su Nuevo Blog</legend>
+<section class="row">
+    <div class="col-md-6">
+        <label>Fecha</label> 
+    </div>
+    <div class="col-md-6">
+        <% var fecha= new Date();var hoy=fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getFullYear()%>
+        <output name="fecha" type="date"><%=hoy%></output>
+    </div>    
+</section>
+
+<section class="row">
+    <div class="col-md-6">
+        <label>Titulo de Entrada de Blog</label>
+    </div>
+    <div class="col-md-6">
+        <input type="Text" name="nombre">
+    </div>
+</section>
+
+
+<section class="row">
+    <div class="col-md-6">
+        <label><input type="radio" name="tipo" value="imagen"> Imagen</label>
+        <label><input type="radio" name="tipo" value="video"> Video</label>
+    </div>
+</section>
+
+<section id="mediaEntry">
+    
+    
+</section>
+
+
+
+<section class="row">
+    <div class="col-md-6">
+        <label>Entrada de blog</label>
+    </div>
+    <div class="col-md-6">
+    <textarea name="descripcion" cols="40" rows="10" placeholder="Escriba entrada de blog"></textarea>
+    </div>
+    
+</section> 
+
+<input type="submit">
+</fieldset>
+</form>
+<br>
+<br>
+<table class="container table-hover">
+    <thead><h3>Blogs</h3></thead>
+    <tbody>
+    <% entradas.forEach(function(entrada){%>
+    <tr class="row table-bordered">
+        <td class="col-md-2 col-xs-6">
+            <%= entrada.nombre%>
+        </td>
+        <td class="col-md-6 col-xs-6">
+            <%= entrada.descripcion%> 
+        </td>
+        <td class="col-md-2 col-xs-6">
+            
+        <% if (entrada.tipo =='imagen'){%>
+            <figure class="col-md-6">
+            <img src=/<%=entrada.media.archivoNombre%> class="img-responsive center-block img-rounded">
+            </figure>
+        <% } else if(entrada.tipo =='video'){%>
+        <div class="col-md-6">
+               <iframe id=<%="video-"+entrada.media.archivoNombre %> 
+                type="text/html" 
+                src= <%='https:/\/www.youtube.com/embed/' + entrada.media.archivoNombre + '?enablejsapi=1' %>
+                ></iframe>
+              
+      </div>
+    <% } %>
+        </td>
+        <td class="col-md-2 col-xs-6">
+            <a class="btn btn-primary" href="/Blogs/<%=entrada._id%>">Editar <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <button type="button" class="btn btn-danger" value="/Blogs/<%=entrada._id%>">Eliminar<span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+        </td>
+    </tr>
+    <% })%>
+    </tbody>
+</table>
+
+<% include pie%>
+
+<script>
+    $(".btn-danger").click(function(){
+        var url=$(this).val();
+        var del = confirm('Desea eliminar este elemento?');
+        if(del){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("DELETE",url,true);
+            xhttp.send();
+            alert("Entada eliminada");
+            location.reload(true);
+        }
+    });
+    
+    $("input[name='tipo']").on("click",function(){
+        var mediaTipo  = $("input[name='tipo']:checked").val();
+        
+        if (mediaTipo == "imagen"){
+        
+        $("#mediaEntry").empty();
+        
+        $("#mediaEntry").html('<div class="col-md-6"><label>Archivo multimedia <strong> Seleccione una imagen</strong></label> </div> <div class="col-md-6"><input type="file" name="media"></div>');
+
+    }
+        else {
+            $("#mediaEntry").empty();
+            
+             $("#mediaEntry").html('<div class="col-md-6"><label>Archivo multimedia <strong> Agregar direccion de video de Youtube</strong></label></div><div class="col-md-6"><input type="text" name="media"></div>');
+    
+    };
+
+    });
+</script>
+
+<script src="/YoutubeApi.js"></script>
+
+<script>
+
+  var entradas
+  
+  <% entradas.forEach(function(entrada){ %>
+  
+     <% if(entrada.tipo == "video"){ %>
+        
+        entradas = <%= entradas.archivoNombre %>
+      
+  <% }}) %>
+  
+  entradas.forEach(dalePlay(entrada));
+  
+  
+</script>
+
+</html>
